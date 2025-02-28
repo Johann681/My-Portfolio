@@ -103,7 +103,7 @@ export const projects = [
     des: "A movie streaming and search app that lets users explore movies and watch trailers.",
     img: "/p3.jpg",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://movie-land-git-main-johanns-projects-86b73528.vercel.app/",
+    link: "https://movie-land-4jcf.vercel.app/",
   },
   {
     id: 4,
