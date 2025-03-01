@@ -8,14 +8,11 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication",
+    title: "I prioritize client collaboration, fostering open communication ",
     description: "",
-    
-    // Reduced large breakpoint span and increased horizontal padding
-    className:
-      "md:col-span-2 lg:col-span-2 row-span-2 min-h-[30vh] px-8 py-6 flex flex-col justify-between bg-gray-800 rounded-lg",
-    imgClassName: "w-full h-auto object-cover mb-4",
-    titleClassName: "text-xl font-bold",
+    className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
+    imgClassName: "w-full h-full",
+    titleClassName: "justify-end",
     img: "/b1.svg",
     spareImg: "",
   },
@@ -23,10 +20,9 @@ export const gridItems = [
     id: 2,
     title: "I'm very flexible with time zone communications",
     description: "",
-    className:
-      "md:col-span-2 lg:col-span-1 row-span-2 p-6 flex flex-col justify-center bg-gray-800 rounded-lg",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
-    titleClassName: "text-lg font-medium text-left",
+    titleClassName: "justify-start",
     img: "",
     spareImg: "",
   },
@@ -34,10 +30,9 @@ export const gridItems = [
     id: 3,
     title: "My tech stack",
     description: "I constantly try to improve",
-    className:
-      "relative md:col-span-2 lg:col-span-2 row-span-1 p-6 flex flex-col justify-center bg-gray-800 rounded-lg",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
-    titleClassName: "text-lg font-medium text-left pl-8",
+    titleClassName: "justify-center",
     img: "",
     spareImg: "",
   },
@@ -45,35 +40,30 @@ export const gridItems = [
     id: 4,
     title: "Tech enthusiast with a passion for development.",
     description: "",
-    className:
-      "md:col-span-2 lg:col-span-1 row-span-1 p-6 flex flex-col justify-start bg-gray-800 rounded-lg",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
-    titleClassName: "text-lg font-medium text-left",
+    titleClassName: "justify-start",
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
+
   {
     id: 5,
     title: "Currently building a JS Animation library",
     description: "The Inside Scoop",
-    className:
-      "md:col-span-2 lg:col-span-2 row-span-1 p-6 relative flex flex-col justify-center bg-gray-800 rounded-lg",
-    // Increase image size: larger width on medium screens (md:w-64) and on small screens (w-40)
-    // Positioned at the right side with right-4 and bottom-4 for spacing
-    imgClassName: "absolute right-4 bottom-4 md:w-64 w-70 object-cover",
-    titleClassName: "text-lg font-medium text-center md:text-left",
+    className: "md:col-span-3 md:row-span-2",
+    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
+    titleClassName: "justify-center md:justify-start lg:justify-center",
     img: "/b5.svg",
     spareImg: "/grid.svg",
   },
-  
   {
     id: 6,
     title: "Do you want to start a project together?",
     description: "",
-    className:
-      "md:col-span-1 lg:col-span-1 row-span-1 p-6 flex flex-col justify-center bg-gray-800 rounded-lg",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
-    titleClassName: "text-lg font-medium text-center",
+    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
     img: "",
     spareImg: "",
   },
@@ -236,10 +226,7 @@ export const socialMedia = [
     id: 1,
     img: "/git.svg",
   },
-  {
-    id: 2,
-    img: "/twit.svg",
-  },
+
   {
     id: 3,
     img: "/link.svg",
