@@ -3,6 +3,7 @@ import React from "react";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
+import { cover } from "three/src/extras/TextureUtils.js";
 const RecentProjects = () => {
   return (
     <div className="py-20">
@@ -24,13 +25,16 @@ const RecentProjects = () => {
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
+        
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <Image src="/bg.png" alt="bgimg"
+                  layout="fill" />
                 </div>
-                <img
+                <Image
                   src={item.img}
                   alt="cover"
                   className="z-10 absolute bottom-0"
+                  layout="fill"
                 />
               </div>
 
@@ -58,7 +62,9 @@ const RecentProjects = () => {
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <Image src={icon} alt="icon5" className="p-2"
+                      height={30}
+                      width={30} />
                     </div>
                   ))}
                 </div>
