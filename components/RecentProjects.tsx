@@ -3,7 +3,6 @@ import React from "react";
 import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
-import { cover } from "three/src/extras/TextureUtils.js";
 const RecentProjects = () => {
   return (
     <div className="py-20">
