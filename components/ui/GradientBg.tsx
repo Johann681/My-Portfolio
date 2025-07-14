@@ -40,8 +40,10 @@ export const BackgroundGradientAnimation = ({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
-  // Apply custom CSS variables to the document
+  // ✅ FIXED: Guard against document being undefined in server builds
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
     document.body.style.setProperty(
       "--gradient-background-start",
       gradientBackgroundStart
@@ -71,7 +73,6 @@ export const BackgroundGradientAnimation = ({
     blendingValue,
   ]);
 
-  // Fixed: Include curX and curY as dependencies and use functional updates
   useEffect(() => {
     if (!interactiveRef.current) return;
 
