@@ -40,10 +40,16 @@ export const BackgroundGradientAnimation = ({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
-  // ✅ Fix: Include missing dependencies
+  // Apply custom CSS variables to the document
   useEffect(() => {
-    document.body.style.setProperty("--gradient-background-start", gradientBackgroundStart);
-    document.body.style.setProperty("--gradient-background-end", gradientBackgroundEnd);
+    document.body.style.setProperty(
+      "--gradient-background-start",
+      gradientBackgroundStart
+    );
+    document.body.style.setProperty(
+      "--gradient-background-end",
+      gradientBackgroundEnd
+    );
     document.body.style.setProperty("--first-color", firstColor);
     document.body.style.setProperty("--second-color", secondColor);
     document.body.style.setProperty("--third-color", thirdColor);
@@ -65,19 +71,20 @@ export const BackgroundGradientAnimation = ({
     blendingValue,
   ]);
 
-  // ✅ Fix: Use functional update to avoid missing dependency warning
+  // Fixed: Include curX and curY as dependencies and use functional updates
   useEffect(() => {
-    function move() {
-      if (!interactiveRef.current) {
-        return;
-      }
-      setCurX((prevX) => prevX + (tgX - prevX) / 20);
-      setCurY((prevY) => prevY + (tgY - prevY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-    }
+    if (!interactiveRef.current) return;
 
-    move();
-  }, [tgX, tgY]);
+    const newX = curX + (tgX - curX) / 20;
+    const newY = curY + (tgY - curY) / 20;
+
+    setCurX(newX);
+    setCurY(newY);
+
+    interactiveRef.current.style.transform = `translate(${Math.round(
+      newX
+    )}px, ${Math.round(newY)}px)`;
+  }, [tgX, tgY, curX, curY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -103,7 +110,11 @@ export const BackgroundGradientAnimation = ({
       <svg className="hidden">
         <defs>
           <filter id="blurMe">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -121,17 +132,21 @@ export const BackgroundGradientAnimation = ({
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
-        {[firstColor, secondColor, thirdColor, fourthColor, fifthColor].map((color, index) => (
-          <div
-            key={index}
-            className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--${color}-color),_0.8)_0,_rgba(var(--${color}-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-              `opacity-100`,
-              index === 3 ? "animate-fourth opacity-70" : `animate-${index + 1}`
-            )}
-          ></div>
-        ))}
+        {[firstColor, secondColor, thirdColor, fourthColor, fifthColor].map(
+          (color, index) => (
+            <div
+              key={index}
+              className={cn(
+                `absolute [background:radial-gradient(circle_at_center,_rgba(var(--${color}-color),_0.8)_0,_rgba(var(--${color}-color),_0)_50%)_no-repeat]`,
+                `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+                `opacity-100`,
+                index === 3
+                  ? "animate-fourth opacity-70"
+                  : `animate-${index + 1}`
+              )}
+            ></div>
+          )
+        )}
 
         {interactive && (
           <div
